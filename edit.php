@@ -13,6 +13,7 @@ if(isset($_GET['id'])){
     $result =$db->prepare($query);
     $result->execute([$id]);
     $user= $result->fetch();
+    
 
 }
  
@@ -52,12 +53,7 @@ if(isset($_GET['id'])){
             <input type="submit" value="Editer">
            
         </form>
-      <?php
-      // echo $_GET['id']
-       ?>
-      <?
-     // =$user['email']; 
-      ?>
+     
     </div>
 </body>
 
