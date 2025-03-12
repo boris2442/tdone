@@ -5,13 +5,14 @@ require_once"connexion.php";
 
 
 
-
+var_dump($_GET['id']);
 if(isset($_GET['id'])){
 
     $id = $_GET['id'];
     $query = "SELECT * FROM users WHERE id=?";
-    $result =$cnx->prepare($query);
+    $result =$db->prepare($query);
     $result->execute([$id]);
+    $user= $result->fetch();
 
 }
  
@@ -32,22 +33,31 @@ if(isset($_GET['id'])){
 
 <body>
     <div class="contains" id="container">
+   
         <form action="" method="post" class="form1">
+
+        
             <div class="">
                 <label for="name">Entrer votre nom</label>
-                <input type="text" name="name" placeholder="SIMO AUBIN">
+                <input type="text" name="name" placeholder="SIMO AUBIN" value="<?=$user["name"]; ?> ">
             </div>
             <div class="">
                 <label for="email">Entrer votre email</label>
-                <input type="email" name="email" placeholder="aubinborissimotsebo@gmail.com">
+                <input type="email" name="email" placeholder="aubinborissimotsebo@gmail.com" value="<?=$user['email']; ?>">
             </div>
             <div class="">
                 <label for="textarea">Laisser un message</label>
-                <textarea name="message" id="textarea"></textarea>
+                <textarea name="message" id="textarea" value=""><?=$user['message']; ?></textarea>
             </div>
-            <input type="submit" value="Edite">
+            <input type="submit" value="Editer">
+           
         </form>
-      
+      <?php
+      // echo $_GET['id']
+       ?>
+      <?
+     // =$user['email']; 
+      ?>
     </div>
 </body>
 
