@@ -32,7 +32,7 @@ if (!empty($_POST)) {
 
 <body>
     <div class="contains" id="container">
-        <form action="" method="post" class="form1">
+        <form action="table.php" method="post" class="form1">
             <div class="">
                 <label for="name">Entrer votre nom</label>
                 <input type="text" name="name" placeholder="SIMO AUBIN">

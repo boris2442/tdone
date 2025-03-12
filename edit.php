@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
 <body>
     <div class="contains" id="container">
 
-        <form action="" method="post" class="form1">
+        <form action="table.php" method="post" class="form1">
 
 
             <div class="">
