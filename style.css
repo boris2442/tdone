@@ -50,10 +50,16 @@ body{
 
 table{
     width: 90%;
+    font-weight: bold;
     margin: 0 auto;
 }
 table td, table th{
     border-top: none;
     border-left: none;
     padding: 10px;
+}
+
+table th{
+    background-color:blue;
+    color:#f1f1f1
 }
