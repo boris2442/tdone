@@ -38,8 +38,8 @@
                 <td><?php  echo $user["name"]?></td>
                 <td><?php  echo $user["email"]?></td>
                 <td><?php  echo $user["message"]?></td>
-                <td>Editer</td>
-                <td>Supprimer</td>
+                <td><a href="edit.php"<?php echo $user['id'];?> >Editer</a></td>
+                <td><a href="">Supprimer</a></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

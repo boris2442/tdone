@@ -47,7 +47,7 @@ if (!empty($_POST)) {
             </div>
             <input type="submit" value="Ajouter">
         </form>
-        <table border="3">
+        <!-- <table border="3">
             <caption>fiche de recueillement</caption>
             <thead>
                 <tr>
@@ -69,7 +69,7 @@ if (!empty($_POST)) {
                     <td></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
     </div>
 </body>
 
