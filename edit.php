@@ -4,7 +4,7 @@ require_once "connexion.php";
 
 
 
-var_dump($_GET['id']);
+// var_dump($_GET['id']);
 if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
@@ -13,22 +13,28 @@ if (isset($_GET['id'])) {
     $result->execute([$id]);
     $user = $result->fetch();
 }
-if(isset($_POST["update"])){
-    $id=intval($_GET['$id']);
-    $name=htmlspecialchars($_POST['name']);
-    $email=htmlspecialchars($_POST['email']);
-    $message=htmlspecialchars($_POST['message']);
 
-    $sql="UPDATE `users` SET name=?, email=?, message=?";
-    $requete=$db->prepare($sql);
-    $requete->execute([$id, $name, $email, $message]);
+if (isset($_POST["update"])) {
+    $id = intval($_GET['$id']);
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    $sql = "UPDATE `users` SET name=?, email=?, message=? WHERE id=? ";
+    $requete = $db->prepare($sql);
+    // $requete->execute([$name, $email, $message, $id]);
+    if($requete->execute([$name, $email, $message, $id])){
+        echo "mise a jour reussie dans la database";
+    }else{
+        echo "echec de la mise a jour dans la database";
+    }
 }
 
 
 
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -38,7 +44,11 @@ if(isset($_POST["update"])){
     <title>Document</title>
 </head>
 
-<body>
+<body> -->
+<?php
+$title="editer";
+include_once "includes/header.php";
+?>
     <div class="contains" id="container">
 
         <form action="table.php" method="post" class="form1">
@@ -54,14 +64,15 @@ if(isset($_POST["update"])){
             </div>
             <div class="">
                 <label for="textarea">Laisser un message</label>
-                <textarea name="message" id="textarea" value="" ><?= $user['message']; ?></textarea>
+                <textarea name="message" id="textarea" value=""><?= $user['message']; ?></textarea>
             </div>
-            
-                <input type="submit" value="Editer">
-            
+
+            <input type="submit" value="Editer">
+
         </form>
 
     </div>
-</body>
+<?php
+require_once "includes/footer.php";
 
-</html>
+?>
