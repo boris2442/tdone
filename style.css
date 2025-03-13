@@ -33,9 +33,7 @@ body{
     height: 150px;
     resize: none;
 }
-textarea{
- resize: none;
-}
+
 .form1 div input, .form1 input, .form1 textarea{
     border-radius: 7px;
     padding: 10px;
@@ -65,5 +63,8 @@ table td, table th{
 
 table th{
     background-color:blue;
-    color:#f1f1f1
+    color:#f1f1f1;
 }
+textarea{
+    resize: none;
+   }
