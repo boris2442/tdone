@@ -68,3 +68,9 @@ table th{
 textarea{
     resize: none;
    }
+footer{
+font-weight: bold;
+}
+   footer p{
+   padding-left: 30px;
+   }
