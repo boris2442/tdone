@@ -39,7 +39,8 @@
                 <td><?php  echo $user["email"]?></td>
                 <td><?php  echo $user["message"]?></td>
                 <td><a href="edit.php?id=<?=$user['id']?>" name="update">Editer</a></td>
-                <td><a href="">Supprimer</a></td>
+                <td><a href="delete.php?id=<?=$user['id']?>" name="delete">supprimer</a></td>
+             
             </tr>
             <?php endforeach; ?>
         </tbody>

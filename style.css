@@ -31,6 +31,10 @@ body{
 }
 .form1 textarea{
     height: 150px;
+    resize: none;
+}
+textarea{
+ resize: none;
 }
 .form1 div input, .form1 input, .form1 textarea{
     border-radius: 7px;

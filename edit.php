@@ -13,7 +13,16 @@ if (isset($_GET['id'])) {
     $result->execute([$id]);
     $user = $result->fetch();
 }
+if(isset($_POST["update"])){
+    $id=intval($_GET['$id']);
+    $name=htmlspecialchars($_POST['name']);
+    $email=htmlspecialchars($_POST['email']);
+    $message=htmlspecialchars($_POST['message']);
 
+    $sql="UPDATE `users` SET name=?, email=?, message=?";
+    $requete=$db->prepare($sql);
+    $requete->execute([$id, $name, $email, $message]);
+}
 
 
 
@@ -45,7 +54,7 @@ if (isset($_GET['id'])) {
             </div>
             <div class="">
                 <label for="textarea">Laisser un message</label>
-                <textarea name="message" id="textarea" value=""><?= $user['message']; ?></textarea>
+                <textarea name="message" id="textarea" value="" ><?= $user['message']; ?></textarea>
             </div>
             
                 <input type="submit" value="Editer">
