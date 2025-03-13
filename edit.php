@@ -4,7 +4,7 @@ require_once "connexion.php";
 
 
 
-// var_dump($_GET['id']);
+
 if (isset($_GET['id'])) {
 
     $id = $_GET['id'];
@@ -14,22 +14,37 @@ if (isset($_GET['id'])) {
     $user = $result->fetch();
 }
 
-if (isset($_POST["update"])) {
-    $id = intval($_GET['$id']);
+// if (isset($_POST["update"])) {
+//     $id = intval($_GET['$id']);
+//     $name = htmlspecialchars($_POST['name']);
+//     $email = htmlspecialchars($_POST['email']);
+//     $message = htmlspecialchars($_POST['message']);
+
+//     $sql = "UPDATE `users` SET name=?, email=?, message=? WHERE id=? ";
+//     $requete = $db->prepare($sql);
+//     // $requete->execute([$name, $email, $message, $id]);
+//     if ($requete->execute([$name, $email, $message, $id])) {
+//         echo "mise a jour reussie dans la database";
+//     } else {
+//         echo "echec de la mise a jour dans la database";
+//     }
+// }
+if(isset($_POST['update'])){
+    $id = intval($_GET['id']);
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
     $message = htmlspecialchars($_POST['message']);
 
-    $sql = "UPDATE `users` SET name=?, email=?, message=? WHERE id=? ";
-    $requete = $db->prepare($sql);
-    // $requete->execute([$name, $email, $message, $id]);
-    if ($requete->execute([$name, $email, $message, $id])) {
-        echo "mise a jour reussie dans la database";
-    } else {
-        echo "echec de la mise a jour dans la database";
-    }
+$sql = "update users set email = :email, name = :name, message = :message where id = :id";
+$prepare = $db->prepare($sql);
+$execute  = $prepare->execute([
+    ':id'=>$id,
+    ':name'=>$name,
+    ':email'=>$email,
+    ':message'=>$message,
+]);
+ header('location:table.php');
 }
-
 
 
 ?>
@@ -41,7 +56,7 @@ include_once "includes/header.php";
 ?>
 <div class="contains" id="container">
 
-    <form action="table.php" method="post" class="form1">
+    <form  method="post" class="form1">
 
 
         <div class="">
@@ -54,10 +69,10 @@ include_once "includes/header.php";
         </div>
         <div class="">
             <label for="textarea">Laisser un message</label>
-            <textarea name="message" id="textarea" value=""><?= $user['message']; ?></textarea>
+            <textarea name="message" id="textarea" ><?= $user['message']; ?></textarea>
         </div>
 
-        <input type="submit" value="Editer">
+        <input type="submit" value="Editer" name='update'>
 
     </form>
 
